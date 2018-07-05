@@ -5,6 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "global": "^4.3.2",
+    "semantic-ui-css": "^2.3.2",
+    "semantic-ui-vue": "^0.2.11",
     "vue": "^2.5.16"
   },
   "devDependencies": {
