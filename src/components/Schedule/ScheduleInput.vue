@@ -1,0 +1,30 @@
+<template>
+	<sui-table-cell>
+		<sui-input type="tel" :placeholder="placeholder" v-model.number="localValue" />
+	</sui-table-cell>
+</template>
+
+<script>
+export default {
+	props: {
+		placeholder: String,
+		value: Number,
+		index: Number,
+		onChange: Function
+	},
+	data() {
+		return {
+			localValue: this.value
+		}
+	},
+	watch: {
+		value(val) {
+			this.localValue = val;
+		},
+		localValue(val) {
+			this.$emit('updateDataSet', this.index, val || null)
+		}
+	}
+}
+</script>
+
