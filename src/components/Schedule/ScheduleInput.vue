@@ -27,4 +27,13 @@ export default {
 	}
 }
 </script>
-
+<style scoped>
+	.input {
+		max-width: 4em;
+	}
+	
+	.ui.input > input[type="tel"] {
+		font-size: 16px;
+		padding: 0.5em;
+	}
+</style>
