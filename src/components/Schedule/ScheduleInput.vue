@@ -1,6 +1,6 @@
 <template>
 	<sui-table-cell>
-		<sui-input type="tel" :placeholder="placeholder" v-model.number="localValue" />
+		<sui-input type="tel" :placeholder="placeholder" v-model.number="localValue" v-bind:readonly="isReadonly" />
 	</sui-table-cell>
 </template>
 
@@ -15,6 +15,15 @@ export default {
 	data() {
 		return {
 			localValue: this.value
+		}
+	},
+	computed: {
+		isReadonly() {
+			if (this.$store.state.role === 'employee') {
+				return true
+			} else {
+				return false
+			}
 		}
 	},
 	watch: {

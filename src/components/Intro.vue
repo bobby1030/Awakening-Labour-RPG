@@ -1,6 +1,6 @@
 <template>
 	<sui-list relaxed class="ordered">
-		<sui-list-item v-for="item in rules">{{ item }}</sui-list-item>
+		<sui-list-item v-for="item in getRules">{{ item.content }}</sui-list-item>
 	</sui-list>
 </template>
 
@@ -32,5 +32,10 @@
 				]
 			}
 		},
+		computed: {
+			getRules() {
+				return this.rules.filter((element) => {return element.visibility === this.$store.state.role || element.visibility === 'public'})
+			}
+		}
 	}
 </script>

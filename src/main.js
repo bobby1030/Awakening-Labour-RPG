@@ -21,6 +21,14 @@ const router = new Router({
 		path: '/',
 		redirect: '/intro'
 	},{
+		path: '/role/:role',
+		redirect: to => {
+			const { hash, params, query } = to;
+			console.log('updateing role: ', params.role);
+			store.commit('updateRole', params.role);
+			return '/';
+		}
+	},{
 		path: '/month/:displayMonth',
 		component: Schedule,
 		props: true

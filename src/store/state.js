@@ -1,5 +1,7 @@
 const state = {
-	workersInfo: [{
+	role: 'employee',
+	workersInfo: [
+		{
 			id: 'empA',
 			color: 'blue',
 			name: '魷魚哥'
@@ -19,7 +21,7 @@ const state = {
 			color: 'olive',
 			name: '海綿寶貝'
 		}
-	]
+	],
 };
 
 export default state;
