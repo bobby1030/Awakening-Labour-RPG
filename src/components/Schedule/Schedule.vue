@@ -27,7 +27,7 @@
 		data() {
 			return {
 				monthlyDataSet: {Jan: [], Feb: [], Mar: []},
-				monthlyProfit: []
+				monthlyProfit: {Jan: [], Feb: [], Mar: []}
 			}
 		},
 		props: {
@@ -56,7 +56,7 @@
 				}
 			},
 			monthlyProfitSum() {
-				let sum = this.monthlyProfit.reduce(function(accumulator, currentValue) {return accumulator + currentValue}, 0)
+				let sum = this.monthlyProfit[this.displayMonth].reduce(function(accumulator, currentValue) {return accumulator + currentValue}, 0)
 				return sum;
 			}
 			
@@ -66,7 +66,7 @@
 				this.monthlyDataSet[month][weekNum] = weeklyDataSet;
 			},
 			updateMonthlyProfit(value, week) {
-				this.$set(this.monthlyProfit, week, value);
+				this.$set(this.monthlyProfit[this.displayMonth], week, value);
 			},
 			
 		},
@@ -76,12 +76,5 @@
 <style>
 	.week{
 		margin-top: 4em;
-	}
-	.input {
-		max-width: 4em;
-	}
-	.ui.input > input[type="tel"] {
-		font-size: 16px;
-		padding: 0.5em;
 	}
 </style>
