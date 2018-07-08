@@ -77,7 +77,7 @@
 
 <style>
 	.week{
-		margin-bottom: 3em;
+		margin-top: 4em;
 	}
 	.input {
 		max-width: 4em;
