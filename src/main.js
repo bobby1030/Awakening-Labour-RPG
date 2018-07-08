@@ -4,6 +4,8 @@ import Router from 'vue-router';
 import SemanticUIVue from 'semantic-ui-vue';
 import 'semantic-ui-css/semantic.min.css';
 
+import store from './store/index.js';
+
 import App from './components/App.vue';
 import Schedule from './components/Schedule/Schedule.vue';
 import Scoreboard from './components/Scoreboard.vue';
@@ -30,12 +32,6 @@ const router = new Router({
 		component: Scoreboard
 	}]
 })
-
-const store = new Vuex.Store({
-	state: {
-		count: 1,
-	}
-});
 
 var app = new Vue({
 	el: '#app',

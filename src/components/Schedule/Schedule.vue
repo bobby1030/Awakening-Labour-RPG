@@ -9,7 +9,6 @@
 		<div class="week" v-for="weekNum in getWeeks" v-bind:key="displayMonth+weekNum">
 			<ScheduleWeek
 				:weekNum="weekNum"
-				:workersInfo="workersInfo"
 				v-bind:dataSet="monthlyDataSet[displayMonth][weekNum]"
 				v-bind:monthStr="displayMonth"
 				@updateMonthlyDataSet="updateMonthlyDataSet"
@@ -32,7 +31,6 @@
 			}
 		},
 		props: {
-			workersInfo: Array,
 			displayMonth: String,
 			displayMonthText: String,
 		},
