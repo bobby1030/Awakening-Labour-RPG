@@ -9,7 +9,7 @@ var config = {
 	output: {
 		path: path.join(__dirname, 'static/dist'),
 		filename: 'bundle.js',
-		publicPath: '/dist/'
+		publicPath: '/'
 	},
 	module: {
 		rules: [{
@@ -38,7 +38,7 @@ var config = {
 		new webpack.HotModuleReplacementPlugin()
 	],
 	devServer: {
-		contentBase: path.join(__dirname, 'static'),
+		contentBase: path.join(__dirname, 'static/dist/'),
 	}
 }
 
