@@ -5,7 +5,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 import App from './components/App.vue';
 import Schedule from './components/Schedule/Schedule.vue';
-import Dashboard from './components/Dashboard.vue';
+import Scoreboard from './components/Scoreboard.vue';
 import Intro from './components/Intro.vue';
 
 Vue.use(Router);
@@ -25,7 +25,7 @@ const router = new Router({
 		component: Intro,
 	},{
 		path: '/scoreboard',
-		component: Dashboard
+		component: Scoreboard
 	}]
 })
 
