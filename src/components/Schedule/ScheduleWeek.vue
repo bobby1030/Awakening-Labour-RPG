@@ -45,7 +45,6 @@
 			weekNum: String,
 			monthStr: String,
 			dataSet: null,
-			workersInfo: Array,
 		},
 		data() {
 			return {
@@ -53,6 +52,9 @@
 			}
 		},
 		computed:{
+			workersInfo() {
+				return this.$store.state.workersInfo
+			},
 			weeklyProfit() {
 				let sumIncome = 0;
 				let sumSalary = 0;

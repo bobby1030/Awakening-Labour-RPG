@@ -1,5 +1,4 @@
 <template>
-
 	<sui-list relaxed class="ordered">
 		<sui-list-item v-for="item in rules">{{ item }}</sui-list-item>
 	</sui-list>
