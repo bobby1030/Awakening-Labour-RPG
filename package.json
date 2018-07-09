@@ -30,7 +30,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --progress --color",
     "dev": "webpack-dev-server --mode development --progress --color --inline --hot --host 0.0.0.0"
   }
 }
