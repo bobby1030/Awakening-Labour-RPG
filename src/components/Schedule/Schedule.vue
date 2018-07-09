@@ -2,7 +2,7 @@
 	<div>
 		<h2 is="sui-header">{{getMonthText}}</h2>
 		<sui-label>
-			月利潤
+			月淨利
 			<sui-label-detail>{{monthlyProfitSum}}</sui-label-detail>
 		</sui-label>
 

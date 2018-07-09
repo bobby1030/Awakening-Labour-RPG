@@ -26,9 +26,18 @@
 			</sui-table-body>
 		</sui-table>
 
-		<sui-label>
-			週利潤
+		<sui-label color="blue">
+			週營業額
+			<sui-label-detail>{{weeklyIncome}}</sui-label-detail>
+		</sui-label>
+		<sui-label color="blue">
+			週淨利
 			<sui-label-detail>{{weeklyProfit}}</sui-label-detail>
+		</sui-label>
+		<!-- temp for 7/9 testing-->
+		<sui-label color="teal">
+			GM 處罰
+			<sui-label-detail><sui-input type="tel" placeholder="" v-model.number="punishment" /></sui-label-detail>
 		</sui-label>
 	</div>
 </template>
@@ -48,25 +57,37 @@
 		},
 		data() {
 			return {
-				weeklyDataSet: this.dataSet
+				weeklyDataSet: this.dataSet,
+				punishment: 0,
 			}
 		},
 		computed:{
 			workersInfo() {
 				return this.$store.state.workersInfo
 			},
-			weeklyProfit() {
+			weeklyIncome() {
 				let sumIncome = 0;
-				let sumSalary = 0;
-				let netProfitPerHour = 30;
+				let incomePerHour = 30;
 				for(var target in this.weeklyDataSet) {
 					for(var i=1; i<=7; i++) {
 						let current = this.weeklyDataSet[target][i]
-						sumIncome += current.value * current.multiplier * netProfitPerHour
+						sumIncome += current.value * current.multiplier * incomePerHour
+					};
+				};
+				return sumIncome;
+			},
+			weeklyProfit() {
+				let sumIncome = 0;
+				let sumSalary = 0;
+				let incomePerHour = 30;
+				for(var target in this.weeklyDataSet) {
+					for(var i=1; i<=7; i++) {
+						let current = this.weeklyDataSet[target][i]
+						sumIncome += current.value * current.multiplier * incomePerHour
 						sumSalary += this.weeklyDataSet[target][0].value * current.value
 					};
 				};
-				return sumIncome - sumSalary;
+				return sumIncome - sumSalary - this.punishment;
 			}
 		},
 		methods: {
@@ -107,5 +128,9 @@
 <style scoped>
 	th > .ui.label {
 		margin-top: 5px;
+	}
+	.ui.label .input {
+		max-width: 4em;
+		font-size: 10px;
 	}
 </style>
