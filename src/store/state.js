@@ -1,5 +1,6 @@
+import genDefaultScheduleData from '../../configs/scheduleTemplate.js';
+
 const state = {
-	role: 'employee',
 	workersInfo: [
 		{
 			id: 'empA',
@@ -22,6 +23,7 @@ const state = {
 			name: '海綿寶貝'
 		}
 	],
+	dataSet: genDefaultScheduleData(),
 };
 
 export default state;

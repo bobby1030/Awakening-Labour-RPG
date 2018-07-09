@@ -1,40 +1,30 @@
 <template>
 	<div>
 		<h2 is="sui-header">{{getMonthText}}</h2>
-		<sui-label>
-			月淨利
-			<sui-label-detail>{{monthlyProfitSum}}</sui-label-detail>
-		</sui-label>
-
+		<Label :detail="monthlyProfit">月淨利</Label>
+		
 		<div class="week" v-for="weekNum in getWeeks" v-bind:key="displayMonth+weekNum">
-			<ScheduleWeek
-				:weekNum="weekNum"
-				v-bind:dataSet="monthlyDataSet[displayMonth][weekNum]"
-				v-bind:monthStr="displayMonth"
-				@updateMonthlyDataSet="updateMonthlyDataSet"
-				@updateMonthlyProfit="updateMonthlyProfit" />
+			<ScheduleWeek :weekNum="weekNum" />
 		</div>
 	</div>
 </template>
 
 <script>
 	import ScheduleWeek from './ScheduleWeek.vue';
+	import Label from '../Label.vue';
+	import {mapState} from 'vuex';
 
 	export default {
 		components: {
-			ScheduleWeek
-		},
-		data() {
-			return {
-				monthlyDataSet: {Jan: [], Feb: [], Mar: []},
-				monthlyProfit: {Jan: [], Feb: [], Mar: []}
-			}
+			ScheduleWeek, Label
 		},
 		props: {
-			displayMonth: String,
 			displayMonthText: String,
 		},
 		computed: {
+			...mapState({
+				displayMonth: state => state.route.params.displayMonth
+			}),
 			getWeeks() {
 				if (this.displayMonth == 'Jan') {
 					return ['4']
@@ -55,20 +45,9 @@
 						break;
 				}
 			},
-			monthlyProfitSum() {
-				let sum = this.monthlyProfit[this.displayMonth].reduce(function(accumulator, currentValue) {return accumulator + currentValue}, 0)
-				return sum;
+			monthlyProfit() {
+				return this.$store.getters.monthlyProfit(this.displayMonth)
 			}
-			
-		},
-		methods: {
-			updateMonthlyDataSet(month, weekNum, weeklyDataSet) {
-				this.monthlyDataSet[month][weekNum] = weeklyDataSet;
-			},
-			updateMonthlyProfit(value, week) {
-				this.$set(this.monthlyProfit[this.displayMonth], week, value);
-			},
-			
 		},
 	};
 </script>

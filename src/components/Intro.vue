@@ -1,6 +1,8 @@
 <template>
 	<sui-list relaxed class="ordered">
-		<sui-list-item v-for="item in getRules">{{ item.content }}</sui-list-item>
+		<sui-list-item v-for="item in getRules" :key="getRules.indexOf(item)">
+			{{ item.content }}
+		</sui-list-item>
 	</sui-list>
 </template>
 
@@ -33,8 +35,11 @@
 			}
 		},
 		computed: {
+			role() {
+				return this.$store.state.route.query.role;
+			},
 			getRules() {
-				return this.rules.filter((element) => {return element.visibility === this.$store.state.role || element.visibility === 'public'})
+				return this.rules.filter((element) => {return element.visibility === this.role || element.visibility === 'public'})
 			}
 		}
 	}

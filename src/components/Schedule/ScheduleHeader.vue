@@ -25,32 +25,42 @@
 export default {
 	props: {
 		worker: Object,
-		dataSet: Array
+		rowDataSet: Object
 	},
 	computed: {
 		salary() {
-			let temp = JSON.parse(JSON.stringify(this.dataSet))
-			let salaryPerHour = temp.shift().value
+			let temp = JSON.parse(JSON.stringify(this.rowDataSet))
+			let salaryPerHour = temp['salary']
 			let sum = 0
-			temp.forEach((ele) => {sum += (ele.value * salaryPerHour)})
+			
+			for(let key in temp) {
+				if (key != 'salary') {
+					sum += temp[key] * salaryPerHour
+				}
+			}
+
 			return sum;
 		},
 		fatigue() {
-			let temp = JSON.parse(JSON.stringify(this.dataSet))
-			temp.shift()
+			let temp = JSON.parse(JSON.stringify(this.rowDataSet))
 			let fatigueSum = 0;
+			let overEightHours = 0;
 			let weekDaysSum = 0;
 			let weekHoursSum = 0;
-			temp.forEach((ele) => {
-				if(ele.value > 8) {
-					fatigueSum++
-				}
-				if (ele.value) {
-					weekDaysSum++
-				}
-				weekHoursSum += ele.value
-			})
 
+			for(let key in temp) {
+				if (key != 'salary') {
+					if (temp[key] > 8) {
+						overEightHours = 1;
+					}
+					if (temp[key]) {
+						weekDaysSum ++;
+					}
+					weekHoursSum += temp[key];
+				}
+			};
+			
+			fatigueSum += overEightHours;
 			if(weekDaysSum > 5) {
 				fatigueSum++
 			}

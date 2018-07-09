@@ -1,25 +1,23 @@
 <template>
-	<sui-container fluid>
-		<Menu></Menu>
-		<sui-container >
-		<sui-segment id="main">
-			<keep-alive>
-				<router-view />
-			</keep-alive>
-		</sui-segment>
+	<div>
+		<sui-container fluid>
+			<Menu></Menu>
 		</sui-container>
-	</sui-container>
+		<sui-container>
+			<sui-segment id="main">
+					<router-view />
+			</sui-segment>
+		</sui-container>
+	</div>
 </template>
 
 <script>
 import Menu from './Menu.vue';
-import Schedule from './Schedule/Schedule.vue';
-
 
 export default {
 	components: {
-		Menu, Schedule
-	}
+		Menu
+	},
 };
 </script>
 
