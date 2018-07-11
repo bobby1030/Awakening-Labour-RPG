@@ -2,7 +2,7 @@ let scheduleData = {
 	Jan: [], // 4 weeks
 	Feb: [], // 4 weeks
 	Mar: [], // 4 weeks
-}
+};
 
 // {columns: [], data: {}}
 // scheduleData['Jan'][4].data['empA']['salary']
@@ -17,14 +17,14 @@ let tableColumns = [
 	{name: 'Thu', text: '四', unit: '小時', tag: {color: null, text: null}, multiplier: 1}, // [5]
 	{name: 'Fri', text: '五', unit: '小時', tag: {color: null, text: null}, multiplier: 1}, // [6]
 	{name: 'Sat', text: '六', unit: '小時', tag: {color: 'pink', text: '尖峰'}, multiplier: 1}, // [7]
-]
+];
 
 let weeklyTemplate = {
 	empA: {salary: 0, Sun: 0, Mon: 0, Tue: 0, Wed: 0, Thu: 0, Fri: 0, Sat: 0},
 	empB: {salary: 0, Sun: 0, Mon: 0, Tue: 0, Wed: 0, Thu: 0, Fri: 0, Sat: 0},	
 	empC: {salary: 0, Sun: 0, Mon: 0, Tue: 0, Wed: 0, Thu: 0, Fri: 0, Sat: 0},	
 	empD: {salary: 0, Sun: 0, Mon: 0, Tue: 0, Wed: 0, Thu: 0, Fri: 0, Sat: 0},	
-}
+};
 
 
 
@@ -85,7 +85,7 @@ let specialCases = [
 
 let deepClone = function(content) {
 	return JSON.parse(JSON.stringify(content));
-}
+};
 
 let genDefaultScheduleData = function (inputCase = specialCases) {
 	let temp = deepClone(scheduleData);
