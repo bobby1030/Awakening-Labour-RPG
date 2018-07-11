@@ -2,7 +2,7 @@
 	<div>
 		<h3 is="sui-header">第 {{weekNum}} 週</h3>
 
-		<sui-table basic="very" text-align="center">
+		<sui-table basic text-align="center">
 			<sui-table-header>
 				<sui-table-row>
 					<sui-table-header-cell></sui-table-header-cell>
