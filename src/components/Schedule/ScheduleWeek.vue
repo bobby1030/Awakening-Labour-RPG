@@ -17,6 +17,24 @@
 			</sui-table-header>
 
 			<sui-table-body>
+				<sui-table-row v-if="role === 'GM'">
+					<sui-table-cell text-align="right">罷工</sui-table-cell>
+					<StrikeCheck 
+						v-for="(col, index) in weeklyDataSet.columns" :key="'strike'+'col-'+col.name"
+						:weekNum="weekNum"
+						:columnIndex="index"
+						:columnName="col.name"
+						:strikeCheck="col.strike" />
+				</sui-table-row>
+				<sui-table-row v-if="role === 'GM'">
+					<sui-table-cell text-align="right">手動增減額</sui-table-cell>
+					<Bonus
+						v-for="(col, index) in weeklyDataSet.columns" :key="'bonus'+'col-'+col.name" 
+						:weekNum="weekNum"
+						:columnIndex="index"
+						:columnName="col.name"
+						:bonus="col.bonus" />
+				</sui-table-row>
 				<ScheduleTableRow
 					v-for="worker in workersInfo" 
 					:key="displayMonth+weekNum+worker.name" 
@@ -32,12 +50,14 @@
 
 <script>
 	import ScheduleTableRow from './ScheduleTableRow.vue';
+	import StrikeCheck from './StrikeCheck.vue';
+	import Bonus from './Bonus.vue';
 	import Label from '../Label.vue';
 	import { mapState } from 'vuex';
 
 	export default {
 		components: {
-			ScheduleTableRow, Label
+			ScheduleTableRow, StrikeCheck, Bonus, Label
 		},
 		props: {
 			weekNum: String,
@@ -46,6 +66,7 @@
 			...mapState({
 				displayMonth: state => state.route.params.displayMonth, 
 				workersInfo: state => state.workersInfo,
+				role: state => state.route.query.role
 			}),
 			weeklyDataSet() {
 				return this.$store.state.dataSet[this.displayMonth][this.weekNum]

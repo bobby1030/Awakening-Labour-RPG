@@ -15,8 +15,14 @@ const store = new Vuex.Store({
 			state.displayMonth = value;
 		},
 		updateInputData(state, configs) {
-			state.dataSet[configs.month][configs.week].data[configs.worker.id][configs.name] = configs.value
-		}
+			state.dataSet[configs.month][configs.week].data[configs.worker.id][configs.name] = configs.value;
+		},
+		updateStrike(state, configs) {
+			state.dataSet[configs.month][configs.week].columns[configs.index].strike = configs.value;
+		},
+		updateBonus(state, configs) {
+			state.dataSet[configs.month][configs.week].columns[configs.index].bonus = configs.value;
+		},
 	},
 	getters: {
 		weeklyIncome: (state) => (month, week) => {
@@ -25,12 +31,14 @@ const store = new Vuex.Store({
 			let incomePerHour = 30;
 
 			weeklyDataSet.columns.forEach((column) => {
-				for (let workerName in weeklyDataSet.data) {
-					if (column.name != 'salary') {
-						sumIncome += weeklyDataSet.data[workerName][column.name] * column.multiplier * incomePerHour
+				let strikePunishment = column.strike ? 0.75 : 1;
+				if (column.name != 'salary') {
+					for (let workerName in weeklyDataSet.data) {
+						sumIncome += weeklyDataSet.data[workerName][column.name] * column.multiplier * strikePunishment * incomePerHour;
 					}
+					sumIncome += column.bonus || 0;
 				}
-			})
+			});
 
 			return sumIncome;
 		},
@@ -42,7 +50,7 @@ const store = new Vuex.Store({
 			weeklyDataSet.columns.forEach((column) => {
 				for (let workerName in weeklyDataSet.data) {
 					if (column.name != 'salary') {
-						sumSalary += weeklyDataSet.data[workerName]['salary'] * weeklyDataSet.data[workerName][column.name]
+						sumSalary += weeklyDataSet.data[workerName]['salary'] * weeklyDataSet.data[workerName][column.name];
 					}
 				}
 			})
