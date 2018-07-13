@@ -4,6 +4,7 @@ import SemanticUIVue from 'semantic-ui-vue';
 import 'semantic-ui-css/semantic.min.css';
 
 import {sync} from 'vuex-router-sync';
+import VueNativeSock from 'vue-native-websocket';
 import store from './store/index.js';
 import router from './router.js';
 
@@ -13,6 +14,13 @@ Vue.use(Vuex);
 Vue.use(SemanticUIVue);
 
 sync(store, router);
+Vue.use(VueNativeSock, `ws://${location.hostname}:${location.port}/api`, {
+	store: store,
+	format: 'json',
+	reconnection: true,
+	reconnectionDelay: 1000,
+});
+store.$socket = Vue.prototype.$socket;
 
 var app = new Vue({
 	el: '#app',

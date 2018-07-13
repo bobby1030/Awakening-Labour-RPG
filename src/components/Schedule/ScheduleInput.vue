@@ -1,6 +1,6 @@
 <template>
 	<sui-table-cell>
-		<sui-input type="tel" :placeholder="placeholder" v-model.number="localValue" v-bind:readonly="isReadonly" />
+		<sui-input type="tel" :placeholder="placeholder" :value="value" @input="updateInputData" v-bind:readonly="isReadonly" />
 	</sui-table-cell>
 </template>
 
@@ -12,20 +12,19 @@
 			worker: Object,
 			weekNum: String,
 			placeholder: String,
-			value: Number
-		},
-		data() {
-			return {
-				localValue: this.value
-			}
 		},
 		computed: {
 			...mapState({
 				displayMonth: state => state.route.params.displayMonth, 
 				role: state => state.route.query.role,
 			}),
-			inputData() {
-					return this.$store.state.dataSet[this.displayMonth][this.weekNum].data[this.worker.id]
+			value: {
+				get() {
+					return this.$store.state.dataSet[this.displayMonth][this.weekNum].data[this.worker.id][this.name]
+				},
+				set(val) {
+					this.updateInputData(val)
+				}
 			},
 			isReadonly() {
 				if (['employer', 'GM'].indexOf(this.role) == -1) {
@@ -33,13 +32,10 @@
 				} else {
 					return false
 				}
-			}
-		},
-		watch: {
-			value(val) {
-				this.localValue = val;
 			},
-			localValue(val) {
+		},
+		methods: {
+			updateInputData(val) {
 				this.$store.commit('updateInputData', {
 					month: this.displayMonth,
 					week: this.weekNum,

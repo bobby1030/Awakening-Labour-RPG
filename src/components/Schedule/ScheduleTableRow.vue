@@ -7,8 +7,7 @@
 			:name="col.name"
 			:worker="worker"
 			:weekNum="weekNum"
-			:placeholder="col.unit" 
-			:value="rowDataSet[col.name]" />
+			:placeholder="col.unit" />
 	</sui-table-row>
 </template>
 

@@ -2,6 +2,7 @@ import Vuex from 'vuex';
 import Vue from 'vue';
 
 import state from './state.js';
+import createWebSocketPlugin from './createWebSocketPlugin.js';
 
 Vue.use(Vuex);
 
@@ -23,6 +24,15 @@ const store = new Vuex.Store({
 		updateBonus(state, configs) {
 			state.dataSet[configs.month][configs.week].columns[configs.index].bonus = configs.value;
 		},
+		SOCKET_ONOPEN(state) {
+			state.socketConnected = true;
+		},
+		SOCKET_ONCLOSE(state) {
+			state.socketConnected = false;
+		},
+		SOCKET_ONMESSAGE(state, remoteState) {
+			Object.assign(state.dataSet, remoteState);
+		}
 	},
 	getters: {
 		weeklyIncome: (state) => (month, week) => {
@@ -67,7 +77,8 @@ const store = new Vuex.Store({
 
 			return sumProfit;
 		}
-	}
+	},
+	plugins: [createWebSocketPlugin(),]
 });
 
 export default store;

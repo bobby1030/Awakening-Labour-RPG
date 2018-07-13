@@ -9,18 +9,20 @@
 		props:{
 			weekNum: String,
 			columnIndex: Number,
-			columnName: String,
-			strikeCheck: Boolean
-		},
-		data() {
-			return {
-				checked: this.strikeCheck,
-			}
+			columnName: String
 		},
 		computed: {
 			...mapState({
 				displayMonth: state => state.route.params.displayMonth, 
 			}),
+			checked: {
+				get() {
+					return this.$store.state.dataSet[this.displayMonth][this.weekNum].columns[this.columnIndex].strike;
+				},
+				set(val) {
+					this.updateStrike(val)
+				}
+			}
 		},
 		methods: {
 			updateStrike(val) {
@@ -30,15 +32,6 @@
 					index: this.columnIndex,
 					value: val,
 				})
-			}
-		},
-		watch: {
-			checked(val) {
-				if (val) {
-					this.updateStrike(val);
-				} else {
-					this.updateStrike(val);
-				}
 			}
 		}
 	}

@@ -1,6 +1,6 @@
 <template>
 	<sui-table-cell>
-		<sui-input v-if="columnName !== 'salary'" type="tel" v-model.number="localValue" />
+		<sui-input v-if="columnName !== 'salary'" type="tel" v-model.number="bonus" />
 	</sui-table-cell>
 </template>
 <script>
@@ -10,17 +10,19 @@
 			weekNum: String,
 			columnIndex: Number,
 			columnName: String,
-			bonus: Number
-		},
-		data() {
-			return {
-				localValue: this.bonus,
-			}
 		},
 		computed: {
 			...mapState({
 				displayMonth: state => state.route.params.displayMonth, 
 			}),
+			bonus: {
+				get() {
+					return this.$store.state.dataSet[this.displayMonth][this.weekNum].columns[this.columnIndex].bonus;
+				},
+				set(val) {
+					this.updateBonus(val)
+				}
+			}
 		},
 		methods: {
 			updateBonus(val) {
@@ -32,10 +34,5 @@
 				})
 			}
 		},
-		watch: {
-			localValue(val) {
-				this.updateBonus(parseInt(val))
-			}
-		}
 	}
 </script>

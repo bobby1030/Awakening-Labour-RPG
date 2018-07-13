@@ -24,6 +24,7 @@ const state = {
 		}
 	],
 	dataSet: genDefaultScheduleData(),
+	socketConnected: false,
 };
 
 export default state;

@@ -23,8 +23,7 @@
 						v-for="(col, index) in weeklyDataSet.columns" :key="'strike'+'col-'+col.name"
 						:weekNum="weekNum"
 						:columnIndex="index"
-						:columnName="col.name"
-						:strikeCheck="col.strike" />
+						:columnName="col.name" />
 				</sui-table-row>
 				<sui-table-row v-if="role === 'GM'">
 					<sui-table-cell text-align="right">手動增減額</sui-table-cell>

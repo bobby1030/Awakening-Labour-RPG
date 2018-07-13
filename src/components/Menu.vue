@@ -24,5 +24,25 @@
 				</sui-dropdown-item>
 			</sui-dropdown-menu>
 		</sui-dropdown>
+		<sui-menu-item position="right">
+			數據同步
+			<Label :color="connectionStatus.color">{{connectionStatus.text}}</Label>
+		</sui-menu-item>
 	</sui-menu>
 </template>
+<script>
+import Label from './Label.vue';
+export default {
+	components: {
+		Label
+	},
+	computed: {
+		connectionStatus() {
+			return {
+				text: this.$store.state.socketConnected ? 'OK' : 'Error',
+				color: this.$store.state.socketConnected ? 'green' : 'red',
+			}
+		}
+	}
+}
+</script>
