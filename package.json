@@ -35,6 +35,7 @@
   },
   "scripts": {
     "build": "webpack --progress --color",
+    "serve": "babel-node ./api/index.js",
     "dev": "webpack-dev-server --mode development --progress --color --inline --hot --host 0.0.0.0"
   }
 }
