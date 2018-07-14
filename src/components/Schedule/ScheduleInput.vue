@@ -41,7 +41,7 @@
 					week: this.weekNum,
 					worker: this.worker,
 					name: this.name,
-					value: val || 0,
+					value: parseInt(val) || 0,
 				})
 			}
 		}
