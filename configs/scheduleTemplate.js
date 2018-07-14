@@ -31,20 +31,20 @@ let weeklyTemplate = {
 let specialCases = [
 	{
 		month: 'Feb',
-		week: '2',
-		startColumn: 1,
-		stopColumn: 3,
+		week: '4',
+		startColumn: 5,
+		stopColumn: 7,
 		content: {
 			multiplier: 1.5,
 			tag: {
 				color: null,
-				text: '世界無線電日連假',
+				text: '愛耳日連假',
 			}
 		}
 	},
 	{
-		month: 'Feb',
-		week: '4',
+		month: 'Mar',
+		week: '1',
 		startColumn: 3,
 		stopColumn: 5,
 		content: {
