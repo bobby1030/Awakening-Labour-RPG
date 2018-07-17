@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Schedule from './components/Schedule/Schedule.vue';
 import Intro from './components/Intro.vue';
+import Schedule from './components/Schedule/Schedule.vue';
+import Lottery from './components/Lottery/Lottery.vue';
 
 Vue.use(Router);
 
@@ -22,6 +23,11 @@ const router = new Router({
 			name: 'Schedule',
 			path: '/Schedule/:displayMonth',
 			component: Schedule,
+		}, 
+		{
+			name: 'Lottery',
+			path: '/Lottery',
+			component: Lottery,
 		}, 
 	]
 })

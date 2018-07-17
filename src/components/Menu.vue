@@ -24,6 +24,13 @@
 				</sui-dropdown-item>
 			</sui-dropdown-menu>
 		</sui-dropdown>
+		<sui-menu-item 
+			:active="$route.name === 'Lottery'" 
+			link 
+			@click="$router.push({name: 'Lottery'})" 
+			icon="rocket">
+			疲勞抽籤
+		</sui-menu-item>
 		<sui-menu-item position="right">
 			數據同步
 			<Label :color="connectionStatus.color">{{connectionStatus.text}}</Label>

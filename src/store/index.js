@@ -9,9 +9,6 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
 	state: state,
 	mutations: {
-		updateRole(state, role) {
-			state.role = role;
-		},
 		updateDisplayMonth(state, value) {
 			state.displayMonth = value;
 		},
@@ -22,6 +19,9 @@ const store = new Vuex.Store({
 			state.dataSet[configs.month][configs.week].columns[configs.index].strike = configs.value;
 		},
 		updateBonus(state, configs) {
+			state.dataSet[configs.month][configs.week].columns[configs.index].bonus = configs.value;
+		},
+		updateFatigue(state, configs) {
 			state.dataSet[configs.month][configs.week].columns[configs.index].bonus = configs.value;
 		},
 		SOCKET_ONOPEN(state) {
@@ -76,6 +76,44 @@ const store = new Vuex.Store({
 			};
 
 			return sumProfit;
+		},
+		fatigueSum: (state) => (workerID) => {
+			// month, week, worker
+			let fatigueSum = 0;
+
+			for (let month in state.dataSet) {
+				for (let week = 1; week <= 4; week++) {
+					let temp = JSON.parse(JSON.stringify(state.dataSet[month][week].data[workerID]));
+					let weeklyFatigueSum = 0;
+					let overEightHours = 0;
+					let weekDaysSum = 0;
+					let weekHoursSum = 0;
+
+					for (let key in temp) {
+						if (key != 'salary') {
+							if (temp[key] > 8) {
+								overEightHours = 1;
+							}
+							if (temp[key]) {
+								weekDaysSum++;
+							}
+							weekHoursSum += temp[key];
+						}
+					};
+
+					weeklyFatigueSum += overEightHours;
+					if (weekDaysSum > 5) {
+						weeklyFatigueSum++;
+					}
+					if (weekHoursSum > 40) {
+						weeklyFatigueSum++;
+					}
+
+					fatigueSum += weeklyFatigueSum;
+				}
+			}	
+			
+			return fatigueSum;
 		}
 	},
 	plugins: [createWebSocketPlugin(),]
