@@ -17,7 +17,11 @@ const router = new Router({
 		{
 			path: '/',
 			redirect: {name: 'CompanyRule'}
-		}, 
+		},
+		{
+			path: '/Intro',
+			redirect: {name: 'CompanyRule'}
+		},
 		{
 			name: 'CompanyRule',
 			path: '/CompanyRule',
