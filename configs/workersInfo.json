@@ -1,0 +1,70 @@
+[	
+	{
+		"id": "empA",
+		"color": "blue",
+		"name": "魷魚哥",
+		"nationalID": "S150201",
+		"employmentDate": "197 年 11 月 10 日",
+		"birthday": "170 年 12 月 24 日",
+		"age": 34,
+		"race": {
+			"name": "剌剌族",
+			"color": "yellow"
+		},
+		"addr": "噗噗堡海豚路 7 號",
+		"mobile": "0923-831-770",
+		"email": "rock246@pmail.com",
+		"annotation": "工會會長，需多加注意"
+	},
+	{
+		"id": "empB",
+		"color": "teal",
+		"name": "派星星",
+		"nationalID": "S273719",
+		"employmentDate": "203 年 6 月 28 日",
+		"birthday": "186 年 1 月 2 日",
+		"age": 19,
+		"race": {
+			"name": "刺刺族",
+			"color": "brown"
+		},
+		"addr": "噗噗堡海豚路 5 號",
+		"mobile": "0923-111-460",
+		"email": "sweet0102@yapoo.com.pp",
+		"annotation": "工會成員"
+	},
+	{
+		"id": "empC",
+		"color": "green",
+		"name": "泡芙阿阿",
+		"nationalID": "F241080",
+		"employmentDate": "201 年 3 月 22 日",
+		"birthday": "163 年 5 月 5 日",
+		"age": 41,
+		"race": {
+			"name": "刺刺族",
+			"color": "brown"
+		},
+		"addr": "噗噗堡沙丁魚路二段 16 巷 5 弄 4 樓",
+		"mobile": "0927-890-595",
+		"email": "ahahpuff@pmail.com",
+		"annotation": "工會成員，背有負債，疑似對剌剌族不滿，需多加注意"
+	},
+	{
+		"id": "empD",
+		"color": "olive",
+		"name": "海綿寶貝",
+		"nationalID": "U277569",
+		"employmentDate": "204 年 7 月 1 日",
+		"birthday": "186 年 7 月 14 日",
+		"age": 18,
+		"race": {
+			"name": "刺刺族",
+			"color": "brown"
+		},
+		"addr": "噗噗堡海豚路 9 號",
+		"mobile": "0923-754-891",
+		"email": "_jellyfish_god66@pmail.com",
+		"annotation": "忠誠水母教信徒"
+	}
+]

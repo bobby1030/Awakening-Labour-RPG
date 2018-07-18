@@ -17,6 +17,14 @@
 			icon="paragraph">
 			勞ㄐ法
 		</sui-menu-item>
+		<sui-menu-item 
+			:active="$route.name === 'WorkersInfo'"
+			v-if="['employer', 'GM'].indexOf(this.role) != -1" 
+			link 
+			@click="$router.push({name: 'WorkersInfo'})" 
+			icon="paragraph">
+			員工資訊
+		</sui-menu-item>
 		<sui-dropdown item icon="calendar alternate outline">
 			班表
 			<sui-dropdown-menu>
@@ -48,6 +56,9 @@ export default {
 		Label
 	},
 	computed: {
+		role() {
+			return this.$store.state.route.query.role
+		},
 		connectionStatus() {
 			return {
 				text: this.$store.state.socketConnected ? 'OK' : 'Error',
