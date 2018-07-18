@@ -1,6 +1,6 @@
 <template>
 	<sui-table-row>
-		<ScheduleHeader :worker="worker" v-bind:rowDataSet="rowDataSet"/>
+		<ScheduleHeader :worker="worker" :rowDataSet="rowDataSet" :columnDataSet="columns"/>
 		<ScheduleInput 
 			v-for="col in columns" 
 			:key="displayMonth+weekNum+worker.name+col.name"

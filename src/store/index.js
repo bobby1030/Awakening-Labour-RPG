@@ -38,10 +38,9 @@ const store = new Vuex.Store({
 			let incomePerHour = 30;
 
 			weeklyDataSet.columns.forEach((column) => {
-				let strikePunishment = column.strike ? 0.75 : 1;
 				if (column.name != 'salary') {
 					for (let workerName in weeklyDataSet.data) {
-						sumIncome += weeklyDataSet.data[workerName][column.name] * column.multiplier * strikePunishment * incomePerHour;
+						sumIncome += weeklyDataSet.data[workerName][column.name] * column.multiplier * column.strike * incomePerHour;
 					}
 					sumIncome += column.bonus || 0;
 				}
@@ -56,7 +55,7 @@ const store = new Vuex.Store({
 
 			weeklyDataSet.columns.forEach((column) => {
 				for (let workerName in weeklyDataSet.data) {
-					if (column.name != 'salary') {
+					if (column.name != 'salary' && column.strike != 0) {
 						sumSalary += weeklyDataSet.data[workerName]['salary'] * weeklyDataSet.data[workerName][column.name];
 					}
 				}
@@ -80,23 +79,26 @@ const store = new Vuex.Store({
 
 			for (let month in state.dataSet) {
 				for (let week = 1; week < state.dataSet[month].length; week++) {
-					let temp = JSON.parse(JSON.stringify(state.dataSet[month][week].data[workerID]));
+					let columnData = JSON.parse(JSON.stringify(state.dataSet[month][week].columns));
+					let rowData = JSON.parse(JSON.stringify(state.dataSet[month][week].data[workerID]));
 					let weeklyFatigueSum = 0;
 					let overEightHours = 0;
 					let weekDaysSum = 0;
 					let weekHoursSum = 0;
 
-					for (let key in temp) {
-						if (key != 'salary') {
-							if (temp[key] > 8) {
+					for (let key in columnData) {
+						let column = columnData[key];
+						if (column.name != 'salary' && column.strike != 0) {
+							// 非薪水、非罷工成功日
+							if (rowData[column.name] > 8) {
 								overEightHours = 1;
 							}
-							if (temp[key]) {
+							if (rowData[column.name]) {
 								weekDaysSum++;
 							}
-							weekHoursSum += temp[key];
+							weekHoursSum += rowData[column.name];
 						}
-					};
+					}
 
 					weeklyFatigueSum += overEightHours;
 					if (weekDaysSum > 5) {
