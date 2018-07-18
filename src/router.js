@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Intro from './components/Intro.vue';
+import CompanyRule from './components/CompanyRule.vue';
 import LabourStandardsAct from './components/LabourStandardsAct.vue';
 import WorkersInfo from './components/WorkersInfo.vue';
 import Schedule from './components/Schedule/Schedule.vue';
@@ -14,12 +14,12 @@ const router = new Router({
 	routes: [
 		{
 			path: '/',
-			redirect: {name: 'Intro'}
+			redirect: {name: 'CompanyRule'}
 		}, 
 		{
-			name: 'Intro',
-			path: '/Intro',
-			component: Intro,
+			name: 'CompanyRule',
+			path: '/CompanyRule',
+			component: CompanyRule,
 		},
 		{
 			name: 'LabourStandardsAct',

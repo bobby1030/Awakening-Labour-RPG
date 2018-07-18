@@ -32,6 +32,15 @@ const store = new Vuex.Store({
 		}
 	},
 	getters: {
+		roleGroup: (state) => (role) => {
+			let workerIDs = state.workersInfo.map(ele => ele.id);
+			
+			if (workerIDs.indexOf(role) != -1) {
+				return 'employee';
+			} else {
+				return role;
+			}
+		},
 		weeklyIncome: (state) => (month, week) => {
 			let weeklyDataSet = state.dataSet[month][week];
 			let sumIncome = 0;

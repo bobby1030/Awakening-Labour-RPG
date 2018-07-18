@@ -4,11 +4,11 @@
 			蝦堡王
 		</sui-menu-item>
 		<sui-menu-item 
-			:active="$route.name === 'Intro'" 
+			:active="$route.name === 'CompanyRule'" 
 			link 
-			@click="$router.push({name: 'Intro'})" 
+			@click="$router.push({name: 'CompanyRule'})" 
 			icon="info circle">
-			規則
+			公司規定
 		</sui-menu-item>
 		<sui-menu-item 
 			:active="$route.name === 'LabourStandardsAct'" 
