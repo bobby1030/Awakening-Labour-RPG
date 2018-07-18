@@ -5,6 +5,7 @@
 		</sui-menu-item>
 		<sui-menu-item 
 			:active="$route.name === 'CompanyRule'" 
+			v-if="['employee', 'employer'].indexOf(getRoleGroup(role)) != -1" 
 			link 
 			@click="$router.push({name: 'CompanyRule'})" 
 			icon="info circle">
@@ -19,7 +20,7 @@
 		</sui-menu-item>
 		<sui-menu-item 
 			:active="$route.name === 'WorkersInfo'"
-			v-if="['employer', 'GM'].indexOf(this.role) != -1" 
+			v-if="['employer', 'GM'].indexOf(getRoleGroup(role)) != -1" 
 			link 
 			@click="$router.push({name: 'WorkersInfo'})" 
 			icon="paragraph">
@@ -38,6 +39,7 @@
 		</sui-dropdown>
 		<sui-menu-item 
 			:active="$route.name === 'Lottery'" 
+			v-if="getRoleGroup(role) === 'employee'" 
 			link 
 			@click="$router.push({name: 'Lottery'})" 
 			icon="rocket">
@@ -65,6 +67,11 @@ export default {
 				color: this.$store.state.socketConnected ? 'green' : 'red',
 			}
 		}
+	},
+	methods: {
+		getRoleGroup(role) {
+			return this.$store.getters.roleGroup(role);
+		},
 	}
 }
 </script>

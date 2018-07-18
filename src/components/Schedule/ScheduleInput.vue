@@ -27,10 +27,10 @@
 				}
 			},
 			isReadonly() {
-				if (['employer', 'GM'].indexOf(this.role) == -1) {
-					return true
+				if (this.getRoleGroup(this.role) === 'employee') {
+					return true;
 				} else {
-					return false
+					return false;
 				}
 			},
 		},
@@ -43,7 +43,10 @@
 					name: this.name,
 					value: parseInt(val) || 0,
 				})
-			}
+			},
+			getRoleGroup(role) {
+				return this.$store.getters.roleGroup(role);
+			},
 		}
 	}
 </script>
