@@ -8,7 +8,7 @@ let scheduleData = {
 // scheduleData['Jan'][4].data[workersInfo[n].id][scheduleData['Jan'][4].columns[n].name]
 
 let tableColumns = [
-	{name: 'salary', text: '時薪', unit: '元', tag: {color: null, text: null}, multiplier: 1}, // [0] 										// [0]
+	{name: 'salary', text: '時薪', unit: '元', tag: {color: null, text: null}, multiplier: 1}, // [0]
 	{name: 'Sun', text: '日', unit: '小時', tag: {color: 'pink', text: '尖峰'}, multiplier: 1, strike: 1, bonus: NaN}, // [1]
 	{name: 'Mon', text: '一', unit: '小時', tag: {color: null, text: null}, multiplier: 1, strike: 1, bonus: NaN}, // [2]
 	{name: 'Tue', text: '二', unit: '小時', tag: {color: null, text: null}, multiplier: 1, strike: 1, bonus: NaN}, // [3]
