@@ -30,6 +30,13 @@
 			疲勞抽籤
 		</sui-menu-item>
 		<sui-menu-item 
+			:active="$route.name === 'GameInstructions'" 
+			link 
+			@click="$router.push({name: 'GameInstructions'})" 
+			icon="paragraph">
+			遊戲說明
+		</sui-menu-item>
+		<sui-menu-item 
 			:active="$route.name === 'LabourStandardsAct'" 
 			link 
 			@click="$router.push({name: 'LabourStandardsAct'})" 

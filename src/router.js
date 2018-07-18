@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 import CompanyRule from './components/CompanyRule.vue';
 import LabourStandardsAct from './components/LabourStandardsAct.vue';
+import GameInstructions from './components/GameInstructions.vue';
 import WorkersInfo from './components/WorkersInfo.vue';
 import Schedule from './components/Schedule/Schedule.vue';
 import Lottery from './components/Lottery/Lottery.vue';
@@ -22,6 +23,21 @@ const router = new Router({
 			component: CompanyRule,
 		},
 		{
+			name: 'Schedule',
+			path: '/Schedule/:displayMonth',
+			component: Schedule,
+		}, 
+		{
+			name: 'Lottery',
+			path: '/Lottery',
+			component: Lottery,
+		},
+		{
+			name: 'GameInstructions',
+			path: '/GameInstructions',
+			component: GameInstructions,
+		},
+		{
 			name: 'LabourStandardsAct',
 			path: '/LabourStandardsAct',
 			component: LabourStandardsAct,
@@ -31,16 +47,6 @@ const router = new Router({
 			path: '/WorkersInfo',
 			component: WorkersInfo,
 		},
-		{
-			name: 'Schedule',
-			path: '/Schedule/:displayMonth',
-			component: Schedule,
-		}, 
-		{
-			name: 'Lottery',
-			path: '/Lottery',
-			component: Lottery,
-		}, 
 	]
 })
 
