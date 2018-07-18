@@ -79,7 +79,7 @@ const store = new Vuex.Store({
 			let fatigueSum = 0;
 
 			for (let month in state.dataSet) {
-				for (let week = 1; week <= 4; week++) {
+				for (let week = 1; week < state.dataSet[month].length; week++) {
 					let temp = JSON.parse(JSON.stringify(state.dataSet[month][week].data[workerID]));
 					let weeklyFatigueSum = 0;
 					let overEightHours = 0;

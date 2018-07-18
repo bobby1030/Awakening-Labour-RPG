@@ -19,9 +19,6 @@
 				<sui-dropdown-item @click="$router.push({name: 'Schedule', params: {displayMonth: 'Feb'}})">
 					二月份
 				</sui-dropdown-item>
-				<sui-dropdown-item @click="$router.push({name: 'Schedule', params: {displayMonth: 'Mar'}})">
-					三月份
-				</sui-dropdown-item>
 			</sui-dropdown-menu>
 		</sui-dropdown>
 		<sui-menu-item 

@@ -1,7 +1,6 @@
 let scheduleData = {
 	Jan: [], // 4 weeks
-	Feb: [], // 4 weeks
-	Mar: [], // 4 weeks
+	Feb: [], // 6 weeks
 };
 
 // {columns: [], data: {}}
@@ -31,7 +30,7 @@ let weeklyTemplate = {
 let specialCases = [
 	{
 		month: 'Feb',
-		week: '4',
+		week: '3',
 		startColumn: 5,
 		stopColumn: 7,
 		content: {
@@ -43,21 +42,8 @@ let specialCases = [
 		}
 	},
 	{
-		month: 'Mar',
-		week: '1',
-		startColumn: 3,
-		stopColumn: 5,
-		content: {
-			multiplier: 1,
-			tag: {
-				color: 'pink',
-				text: '春季大特賣',
-			}
-		}
-	},
-	{
-		month: 'Mar',
-		week: '2',
+		month: 'Feb',
+		week: '4',
 		startColumn: 3,
 		stopColumn: 7,
 		content: {
@@ -69,8 +55,8 @@ let specialCases = [
 		}
 	},
 	{
-		month: 'Mar',
-		week: '3',
+		month: 'Feb',
+		week: '5',
 		startColumn: 4,
 		stopColumn: 6,
 		content: {
@@ -91,9 +77,9 @@ let genDefaultScheduleData = function (inputCase = specialCases) {
 	let temp = deepClone(scheduleData);
 
 	for (let month in scheduleData) {
-		temp[month].push(null);
+		temp[month].push(null); // week 0
 
-		for (var i = 1; i<=4; i++) {
+		for (var i = 1; i<=6; i++) {
 			temp[month].push({columns: [], data: {}});
 			temp[month][i]['columns'] = temp[month][i]['columns'].concat(deepClone(tableColumns));
 			Object.assign(temp[month][i]['data'], deepClone(weeklyTemplate));
