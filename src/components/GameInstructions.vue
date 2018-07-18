@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h2 is="sui-header">遊戲說明</h2>
-		<sui-grid>
+		<sui-grid celled="internally">
 			<sui-grid-row>
 				<sui-grid-column width="four">
 					<h3 is="sui-header">目錄</h3>
@@ -13,7 +13,6 @@
 						</sui-menu>
 					</div>
 				</sui-grid-column>
-
 				<sui-grid-column width="twelve">
 					<ol>
 						<li id="section1">你手中的背景資料就等同於你扮演的角色所擁有的記憶，所以也請務必不要說「我的資料這樣說……」而是「我記得是……」。</li>

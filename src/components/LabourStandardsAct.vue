@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h2 is="sui-header">勞ㄐ法</h2>
-		<sui-grid>
+		<sui-grid celled="internally">
 			<sui-grid-row>
 				<sui-grid-column width="four">
 					<h3 is="sui-header">目錄</h3>
