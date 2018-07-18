@@ -44,6 +44,14 @@
 			勞ㄐ法
 		</sui-menu-item>
 		<sui-menu-item 
+			:active="$route.name === 'StrikeFlow'"
+			v-if="['employee', 'GM'].indexOf(getRoleGroup(role)) != -1" 
+			link 
+			@click="$router.push({name: 'StrikeFlow'})" 
+			icon="paragraph">
+			罷工流程
+		</sui-menu-item>
+		<sui-menu-item 
 			:active="$route.name === 'WorkersInfo'"
 			v-if="['employer', 'GM'].indexOf(getRoleGroup(role)) != -1" 
 			link 

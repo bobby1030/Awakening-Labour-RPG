@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import CompanyRule from './components/CompanyRule.vue';
 import LabourStandardsAct from './components/LabourStandardsAct.vue';
 import GameInstructions from './components/GameInstructions.vue';
+import StrikeFlow from './components/StrikeFlow.vue';
 import WorkersInfo from './components/WorkersInfo.vue';
 import Schedule from './components/Schedule/Schedule.vue';
 import Lottery from './components/Lottery/Lottery.vue';
@@ -41,6 +42,11 @@ const router = new Router({
 			name: 'LabourStandardsAct',
 			path: '/LabourStandardsAct',
 			component: LabourStandardsAct,
+		},
+		{
+			name: 'StrikeFlow',
+			path: '/StrikeFlow',
+			component: StrikeFlow,
 		},
 		{
 			name: 'WorkersInfo',
