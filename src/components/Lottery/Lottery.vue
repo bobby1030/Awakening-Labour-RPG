@@ -49,7 +49,7 @@ export default {
 			return this.$store.state.route.query.role;
 		},
 		fineCount() {
-			return 8;
+			return 6;
 		},
 		fatiguedCount() {
 			return this.$store.getters.fatigueSum(this.role)
