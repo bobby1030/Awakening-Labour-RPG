@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Intro from './components/Intro.vue';
+import LabourStandardsAct from './components/LabourStandardsAct.vue';
 import Schedule from './components/Schedule/Schedule.vue';
 import Lottery from './components/Lottery/Lottery.vue';
 
@@ -18,6 +19,11 @@ const router = new Router({
 			name: 'Intro',
 			path: '/Intro',
 			component: Intro,
+		},
+		{
+			name: 'LabourStandardsAct',
+			path: '/LabourStandardsAct',
+			component: LabourStandardsAct,
 		},
 		{
 			name: 'Schedule',

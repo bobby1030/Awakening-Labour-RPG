@@ -10,6 +10,13 @@
 			icon="info circle">
 			規則
 		</sui-menu-item>
+		<sui-menu-item 
+			:active="$route.name === 'LabourStandardsAct'" 
+			link 
+			@click="$router.push({name: 'LabourStandardsAct'})" 
+			icon="paragraph">
+			勞ㄐ法
+		</sui-menu-item>
 		<sui-dropdown item icon="calendar alternate outline">
 			班表
 			<sui-dropdown-menu>
