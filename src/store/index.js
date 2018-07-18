@@ -21,9 +21,6 @@ const store = new Vuex.Store({
 		updateBonus(state, configs) {
 			state.dataSet[configs.month][configs.week].columns[configs.index].bonus = configs.value;
 		},
-		updateFatigue(state, configs) {
-			state.dataSet[configs.month][configs.week].columns[configs.index].bonus = configs.value;
-		},
 		SOCKET_ONOPEN(state) {
 			state.socketConnected = true;
 		},
