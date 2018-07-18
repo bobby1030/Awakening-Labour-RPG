@@ -11,21 +11,6 @@
 			icon="info circle">
 			公司規定
 		</sui-menu-item>
-		<sui-menu-item 
-			:active="$route.name === 'LabourStandardsAct'" 
-			link 
-			@click="$router.push({name: 'LabourStandardsAct'})" 
-			icon="paragraph">
-			勞ㄐ法
-		</sui-menu-item>
-		<sui-menu-item 
-			:active="$route.name === 'WorkersInfo'"
-			v-if="['employer', 'GM'].indexOf(getRoleGroup(role)) != -1" 
-			link 
-			@click="$router.push({name: 'WorkersInfo'})" 
-			icon="paragraph">
-			員工資訊
-		</sui-menu-item>
 		<sui-dropdown item icon="calendar alternate outline">
 			班表
 			<sui-dropdown-menu>
@@ -44,6 +29,21 @@
 			@click="$router.push({name: 'Lottery'})" 
 			icon="rocket">
 			疲勞抽籤
+		</sui-menu-item>
+		<sui-menu-item 
+			:active="$route.name === 'LabourStandardsAct'" 
+			link 
+			@click="$router.push({name: 'LabourStandardsAct'})" 
+			icon="paragraph">
+			勞ㄐ法
+		</sui-menu-item>
+		<sui-menu-item 
+			:active="$route.name === 'WorkersInfo'"
+			v-if="['employer', 'GM'].indexOf(getRoleGroup(role)) != -1" 
+			link 
+			@click="$router.push({name: 'WorkersInfo'})" 
+			icon="paragraph">
+			員工資訊
 		</sui-menu-item>
 		<sui-menu-item position="right">
 			數據同步
