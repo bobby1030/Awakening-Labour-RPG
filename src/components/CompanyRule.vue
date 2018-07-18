@@ -45,8 +45,8 @@
 					return this.rules.employee;
 				} else if (this.getRoleGroup(role) === 'employer') {
 					return this.rules.employer;
-				} else {
-					return null;
+				} else if (this.getRoleGroup(role) === 'GM') {
+					return this.rules.employee.concat(this.rules.employer)
 				}
 			}
 		}

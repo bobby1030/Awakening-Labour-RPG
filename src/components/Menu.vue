@@ -5,7 +5,6 @@
 		</sui-menu-item>
 		<sui-menu-item 
 			:active="$route.name === 'CompanyRule'" 
-			v-if="['employee', 'employer'].indexOf(getRoleGroup(role)) != -1" 
 			link 
 			@click="$router.push({name: 'CompanyRule'})" 
 			icon="info circle">
