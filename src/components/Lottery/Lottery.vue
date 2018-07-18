@@ -11,14 +11,9 @@
 					好累
 				</LotteryCard>
 		   	</sui-grid-column>
-			<sui-grid-column computer="four" textAlign="center">
-				<LotteryCard :count="deadCount" :img="deadIcon" :checked="this.checked === 'dead'">
-					猝死
-				</LotteryCard>
-		   	</sui-grid-column>
 		</sui-grid-row>
 		<sui-grid-row>
-			<sui-grid-column computer="twelve" textAlign="center">
+			<sui-grid-column computer="eight" textAlign="center">
 				<sui-button fluid size="huge" color="blue" v-bind:loading="loading" @click="onClick()">抽籤</sui-button>
 			</sui-grid-column>
 		</sui-grid-row>
@@ -27,7 +22,6 @@
 <script>
 import fineIcon from '../../../static/icons/fine.svg';
 import fatiguedIcon from '../../../static/icons/fatigue.svg';
-import deadIcon from '../../../static/icons/dead.svg';
 
 import LotteryCard from './LotteryCard';
 
@@ -39,7 +33,6 @@ export default {
 		return {
 			fatiguedIcon,
 			fineIcon,
-			deadIcon,
 			loading: false,
 			checked: null,
 		}
@@ -54,16 +47,12 @@ export default {
 		fatiguedCount() {
 			return this.$store.getters.fatigueSum(this.role)
 		},
-		deadCount() {
-			return Math.floor(this.fatiguedCount / 6);
-		}
 	},
 	methods: {
 		lotteryDraw() {
 			let lotteryPool = {
 				fine: this.fineCount,
 				fatigued: this.fatiguedCount,
-				dead: this.deadCount,
 			}
 			let tempPool = [];
 			for (let key in lotteryPool) {
