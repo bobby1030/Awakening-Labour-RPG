@@ -1,6 +1,6 @@
 <template>
 	<sui-list relaxed class="ordered">
-		<sui-list-item v-for="item in getRules(role)" :key="getRules(role).indexOf(item)">
+		<sui-list-item v-for="(item, index) in getRules(role)" :key="index">
 			{{ item }}
 		</sui-list-item>
 	</sui-list>
