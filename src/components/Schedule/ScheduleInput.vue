@@ -27,7 +27,7 @@
 				}
 			},
 			isReadonly() {
-				if (this.getRoleGroup(this.role) === 'employee') {
+				if (this.getRoleGroup(this.role) === 'employee' || !this.role) {
 					return true;
 				} else {
 					return false;
