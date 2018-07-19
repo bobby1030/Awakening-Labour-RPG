@@ -52,8 +52,10 @@
 			</sui-table-body>
 		</sui-table>
 
-		<Label color="blue" :detail="weeklyIncome">週營業額</Label>
-		<Label color="blue" :detail="weeklyProfit">週淨利</Label>
+		<div v-if="['employer', 'GM'].indexOf(getRoleGroup) != -1">
+			<Label color="blue" :detail="weeklyIncome">週營業額</Label>
+			<Label color="blue" :detail="weeklyProfit">週淨利</Label>
+		</div>
 	</div>
 </template>
 
@@ -85,6 +87,9 @@
 			},
 			weeklyProfit() {
 				return this.$store.getters.weeklyProfit(this.displayMonth, this.weekNum)
+			},
+			getRoleGroup() {
+				return this.$store.getters.roleGroup(this.role)
 			}
 		},
 	}

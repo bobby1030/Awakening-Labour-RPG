@@ -1,7 +1,11 @@
 <template>
 	<div>
 		<h2 is="sui-header">{{getMonthText}}</h2>
-		<Label :detail="monthlyProfit">月淨利</Label>
+		<Label 
+			:detail="monthlyProfit"
+			v-if="['employer', 'GM'].indexOf(getRoleGroup) != -1">
+			月淨利
+		</Label>
 		
 		<div class="week" v-for="weekNum in getWeeks" v-bind:key="displayMonth+weekNum">
 			<ScheduleWeek :weekNum="weekNum" />
@@ -23,7 +27,8 @@
 		},
 		computed: {
 			...mapState({
-				displayMonth: state => state.route.params.displayMonth
+				displayMonth: state => state.route.params.displayMonth,
+				role: state => state.route.query.role
 			}),
 			getWeeks() {
 				if (this.displayMonth == 'Jan') {
@@ -47,6 +52,9 @@
 			},
 			monthlyProfit() {
 				return this.$store.getters.monthlyProfit(this.displayMonth)
+			},
+			getRoleGroup() {
+				return this.$store.getters.roleGroup(this.role)
 			}
 		},
 	};
