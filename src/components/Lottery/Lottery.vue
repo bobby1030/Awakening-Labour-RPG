@@ -45,7 +45,7 @@ export default {
 			return 6;
 		},
 		fatiguedCount() {
-			return this.$store.getters.fatigueSum(this.role)
+			return this.$store.getters.febFatigueSum(this.role)
 		},
 	},
 	methods: {

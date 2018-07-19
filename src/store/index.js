@@ -82,44 +82,43 @@ const store = new Vuex.Store({
 
 			return sumProfit;
 		},
-		fatigueSum: (state) => (workerID) => {
+		febFatigueSum: (state) => (workerID) => {
 			// month, week, worker
 			let fatigueSum = 0;
+			let month = 'Feb';
 
-			for (let month in state.dataSet) {
-				for (let week = 1; week < state.dataSet[month].length; week++) {
-					let columnData = JSON.parse(JSON.stringify(state.dataSet[month][week].columns));
-					let rowData = JSON.parse(JSON.stringify(state.dataSet[month][week].data[workerID]));
-					let weeklyFatigueSum = 0;
-					let overEightHours = 0;
-					let weekDaysSum = 0;
-					let weekHoursSum = 0;
+			for (let week = 1; week < state.dataSet[month].length; week++) {
+				let columnData = JSON.parse(JSON.stringify(state.dataSet[month][week].columns));
+				let rowData = JSON.parse(JSON.stringify(state.dataSet[month][week].data[workerID]));
+				let weeklyFatigueSum = 0;
+				let overEightHours = 0;
+				let weekDaysSum = 0;
+				let weekHoursSum = 0;
 
-					for (let key in columnData) {
-						let column = columnData[key];
-						if (column.name != 'salary' && column.strike != 0) {
-							// 非薪水、非罷工成功日
-							if (rowData[column.name] > 8) {
-								overEightHours = 1;
-							}
-							if (rowData[column.name]) {
-								weekDaysSum++;
-							}
-							weekHoursSum += rowData[column.name];
+				for (let key in columnData) {
+					let column = columnData[key];
+					if (column.name != 'salary' && column.strike != 0) {
+						// 非薪水、非罷工成功日
+						if (rowData[column.name] > 8) {
+							overEightHours = 1;
 						}
+						if (rowData[column.name]) {
+							weekDaysSum++;
+						}
+						weekHoursSum += rowData[column.name];
 					}
-
-					weeklyFatigueSum += overEightHours;
-					if (weekDaysSum > 5) {
-						weeklyFatigueSum++;
-					}
-					if (weekHoursSum > 40) {
-						weeklyFatigueSum++;
-					}
-
-					fatigueSum += weeklyFatigueSum;
 				}
-			}	
+
+				weeklyFatigueSum += overEightHours;
+				if (weekDaysSum > 5) {
+					weeklyFatigueSum++;
+				}
+				if (weekHoursSum > 40) {
+					weeklyFatigueSum++;
+				}
+
+				fatigueSum += weeklyFatigueSum;
+			}
 			
 			return fatigueSum;
 		}
