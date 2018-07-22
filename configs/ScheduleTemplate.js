@@ -28,6 +28,13 @@ let weeklyTemplateJanuary = {
 	empD: {salary: 10, Sun: 8, Mon: 0, Tue: 8, Wed: 8, Thu: 8, Fri: 6, Sat: 8},	
 };
 
+let weeklyTemplateFebuary = {
+	empA: {salary: 0, Sun: 8, Mon: 8, Tue: 8, Wed: 8, Thu: 8, Fri: 8, Sat: 8},
+	empB: {salary: 0, Sun: 8, Mon: 8, Tue: 8, Wed: 8, Thu: 8, Fri: 8, Sat: 8},	
+	empC: {salary: 0, Sun: 8, Mon: 8, Tue: 8, Wed: 8, Thu: 8, Fri: 8, Sat: 8},	
+	empD: {salary: 0, Sun: 8, Mon: 8, Tue: 8, Wed: 8, Thu: 8, Fri: 8, Sat: 8},	
+};
+
 let specialCases = [
 	{
 		month: 'Feb',
@@ -87,6 +94,8 @@ let genDefaultScheduleData = function (inputCase = specialCases) {
 			
 			if (month === 'Jan' && i === 6) {
 				Object.assign(temp[month][i]['data'], deepClone(weeklyTemplateJanuary));
+			} else if (month === 'Feb') {
+				Object.assign(temp[month][i]['data'], deepClone(weeklyTemplateFebuary));
 			} else {
 				Object.assign(temp[month][i]['data'], deepClone(weeklyTemplate));
 			}
