@@ -1,11 +1,7 @@
 let scheduleData = {
-	Jan: [], // 4 weeks
-	Feb: [], // 6 weeks
+	Jan: [],
+	Feb: [],
 };
-
-// {columns: [], data: {}}
-// scheduleData['Jan'][4].data['empA']['salary']
-// scheduleData['Jan'][4].data[workersInfo[n].id][scheduleData['Jan'][4].columns[n].name]
 
 let tableColumns = [
 	{name: 'salary', text: '時薪', unit: '元', tag: {color: null, text: null}, multiplier: 1}, // [0]
@@ -25,7 +21,12 @@ let weeklyTemplate = {
 	empD: {salary: 0, Sun: 0, Mon: 0, Tue: 0, Wed: 0, Thu: 0, Fri: 0, Sat: 0},	
 };
 
-
+let weeklyTemplateJanuary = {
+	empA: {salary: 11, Sun: 8, Mon: 8, Tue: 8, Wed: 8, Thu: 0, Fri: 6, Sat: 8},
+	empB: {salary: 10, Sun: 8, Mon: 8, Tue: 8, Wed: 0, Thu: 8, Fri: 6, Sat: 8},	
+	empC: {salary: 10, Sun: 8, Mon: 8, Tue: 0, Wed: 8, Thu: 8, Fri: 6, Sat: 8},	
+	empD: {salary: 10, Sun: 8, Mon: 0, Tue: 8, Wed: 8, Thu: 8, Fri: 6, Sat: 8},	
+};
 
 let specialCases = [
 	{
@@ -77,14 +78,21 @@ let genDefaultScheduleData = function (inputCase = specialCases) {
 	let temp = deepClone(scheduleData);
 
 	for (let month in scheduleData) {
-		temp[month].push(null); // week 0
 
+		temp[month].push(null); // week 0
+	
 		for (var i = 1; i<=6; i++) {
 			temp[month].push({columns: [], data: {}});
 			temp[month][i]['columns'] = temp[month][i]['columns'].concat(deepClone(tableColumns));
-			Object.assign(temp[month][i]['data'], deepClone(weeklyTemplate));
+			
+			if (month === 'Jan' && i === 6) {
+				Object.assign(temp[month][i]['data'], deepClone(weeklyTemplateJanuary));
+			} else {
+				Object.assign(temp[month][i]['data'], deepClone(weeklyTemplate));
+			}
 			// fill in data structure
 		}
+		
 	}
 
 	inputCase.forEach(element => {
