@@ -1,5 +1,5 @@
-import workersInfo from '../../configs/workersInfo.json';
-import genDefaultScheduleData from '../../configs/scheduleTemplate.js';
+import workersInfo from '../../configs/WorkersInfo.json';
+import genDefaultScheduleData from '../../configs/ScheduleTemplate.js';
 
 const state = {
 	workersInfo: workersInfo,

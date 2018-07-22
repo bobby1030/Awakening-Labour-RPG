@@ -5,7 +5,7 @@ const app = express();
 const expressWs = require('express-ws')(app);
 
 
-let genDefaultScheduleData = require('../configs/scheduleTemplate.js').default;
+let genDefaultScheduleData = require('../configs/ScheduleTemplate.js').default;
 let stateStore = genDefaultScheduleData();
 
 const updateState = (mutation, payload) => {
