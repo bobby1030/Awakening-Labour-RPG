@@ -26,7 +26,7 @@ const updateState = (mutation, payload) => {
 };
 
 app.ws('/api', (ws, req) => {
-	ws.id = uuid.v4();
+	ws.id = uuid.v4().substring(0, 8);
 	console.log(`[${new Date().toLocaleString()}][ESTABLISHED]: ${ws.id}`);
 
 	console.log(`[${new Date().toLocaleString()}][SEND] Initial state: ${ws.id}`)
