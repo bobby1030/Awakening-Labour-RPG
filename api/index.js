@@ -4,17 +4,24 @@ const uuid = require('node-uuid');
 const app = express();
 const expressWs = require('express-ws')(app);
 
-
 let genDefaultScheduleData = require('../configs/ScheduleTemplate.js').default;
-let stateStore = genDefaultScheduleData();
+let stateStore = {
+	dataSet: genDefaultScheduleData(),
+	progressWeek: {
+		Jan: 6,
+		Feb: 1,
+	}
+};
 
 const updateState = (mutation, payload) => {
 	if (mutation === 'updateInputData') {
-		stateStore[payload.month][payload.week].data[payload.worker.id][payload.name] = payload.value;
+		stateStore.dataSet[payload.month][payload.week].data[payload.worker.id][payload.name] = payload.value;
 	} else if (mutation === 'updateStrike') {
-		stateStore[payload.month][payload.week].columns[payload.index].strike = payload.value;
+		stateStore.dataSet[payload.month][payload.week].columns[payload.index].strike = payload.value;
 	} else if (mutation === 'updateBonus') {
-		stateStore[payload.month][payload.week].columns[payload.index].bonus = payload.value;
+		stateStore.dataSet[payload.month][payload.week].columns[payload.index].bonus = payload.value;
+	} else if (mutation === 'updateProgressWeek') {
+		stateStore.progressWeek[payload.month] = payload.value;
 	}
 };
 

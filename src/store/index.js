@@ -21,6 +21,9 @@ const store = new Vuex.Store({
 		updateBonus(state, configs) {
 			state.dataSet[configs.month][configs.week].columns[configs.index].bonus = configs.value;
 		},
+		updateProgressWeek(state, configs) {
+			state.progressWeek[configs.month] = configs.value;
+		},
 		SOCKET_ONOPEN(state) {
 			state.socketConnected = true;
 		},
@@ -28,7 +31,7 @@ const store = new Vuex.Store({
 			state.socketConnected = false;
 		},
 		SOCKET_ONMESSAGE(state, remoteState) {
-			Object.assign(state.dataSet, remoteState);
+			Object.assign(state, remoteState);
 		}
 	},
 	getters: {
@@ -73,10 +76,9 @@ const store = new Vuex.Store({
 			return sumIncome - sumSalary;
 		},
 		monthlyProfit: (state, getters) => (month) => {
-			let monthlyDataSet = state.dataSet[month];
 			let sumProfit = 0;
 
-			for (let week = 1; week < monthlyDataSet.length; week++) {
+			for (let week = 1; week <= state.progressWeek[month]; week++) {
 				sumProfit += getters.weeklyProfit(month, week);
 			};
 
@@ -87,7 +89,7 @@ const store = new Vuex.Store({
 			let fatigueSum = 0;
 			let month = 'Feb';
 
-			for (let week = 1; week < state.dataSet[month].length; week++) {
+			for (let week = 1; week <= state.progressWeek[month]; week++) {
 				let columnData = JSON.parse(JSON.stringify(state.dataSet[month][week].columns));
 				let rowData = JSON.parse(JSON.stringify(state.dataSet[month][week].data[workerID]));
 				let weeklyFatigueSum = 0;

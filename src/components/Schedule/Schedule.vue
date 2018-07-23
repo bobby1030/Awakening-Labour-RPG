@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<h2 is="sui-header">{{getMonthText}}</h2>
+		<ProgressWeekSelector v-if="getRoleGroup === 'GM'"/>
 		<Label 
 			:detail="monthlyProfit"
 			v-if="['employer', 'GM'].indexOf(getRoleGroup) != -1">
@@ -15,12 +16,13 @@
 
 <script>
 	import ScheduleWeek from './ScheduleWeek.vue';
+	import ProgressWeekSelector from './ProgressWeekSelector.vue';
 	import Label from '../Label.vue';
 	import {mapState} from 'vuex';
 
 	export default {
 		components: {
-			ScheduleWeek, Label
+			ScheduleWeek, ProgressWeekSelector, Label
 		},
 		props: {
 			displayMonthText: String,

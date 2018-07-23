@@ -5,6 +5,10 @@ const state = {
 	workersInfo: workersInfo,
 	dataSet: genDefaultScheduleData(),
 	socketConnected: false,
+	progressWeek: {
+		Jan: 6,
+		Feb: 1,
+	}
 };
 
 export default state;
