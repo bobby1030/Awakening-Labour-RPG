@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import CompanyRule from './components/CompanyRule.vue';
-import LabourStandardsAct from './components/LabourStandardsAct.vue';
-import GameInstructions from './components/GameInstructions.vue';
-import StrikeFlow from './components/StrikeFlow.vue';
-import WorkersInfo from './components/WorkersInfo.vue';
-import Schedule from './components/Schedule/Schedule.vue';
-import Lottery from './components/Lottery/Lottery.vue';
+const CompanyRule = () => import('./components/CompanyRule.vue');
+const LabourStandardsAct = () => import('./components/LabourStandardsAct.vue');
+const GameInstructions = () => import('./components/GameInstructions.vue');
+const StrikeFlow = () => import('./components/StrikeFlow.vue');
+const WorkersInfo = () => import('./components/WorkersInfo.vue');
+const Schedule = () => import('./components/Schedule/Schedule.vue');
+const Lottery = () => import('./components/Lottery/Lottery.vue');
 
 Vue.use(Router);
 
