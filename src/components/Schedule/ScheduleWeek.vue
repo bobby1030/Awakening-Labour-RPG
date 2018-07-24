@@ -18,22 +18,12 @@
 
 			<sui-table-body>
 				<sui-table-row v-if="role === 'GM'">
-					<sui-table-cell text-align="right">罷工成功</sui-table-cell>
+					<sui-table-cell text-align="right">罷工</sui-table-cell>
 					<StrikeCheck 
-						v-for="(col, index) in weeklyDataSet.columns" :key="'strikeSuccess'+'col-'+col.name"
+						v-for="(col, index) in weeklyDataSet.columns" :key="'strike'+'col-'+col.name"
 						:weekNum="weekNum"
 						:columnIndex="index"
-						:columnName="col.name"
-						:success="true" />
-				</sui-table-row>
-				<sui-table-row v-if="role === 'GM'">
-					<sui-table-cell text-align="right">罷工失敗</sui-table-cell>
-					<StrikeCheck 
-						v-for="(col, index) in weeklyDataSet.columns" :key="'strikeFailed'+'col-'+col.name"
-						:weekNum="weekNum"
-						:columnIndex="index"
-						:columnName="col.name"
-						:success="false" />
+						:columnName="col.name" />
 				</sui-table-row>
 				<sui-table-row v-if="role === 'GM'">
 					<sui-table-cell text-align="right">手動增減額</sui-table-cell>

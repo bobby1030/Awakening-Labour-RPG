@@ -5,13 +5,13 @@ let scheduleData = {
 
 let tableColumns = [
 	{name: 'salary', text: '時薪', unit: '元', tag: {color: null, text: null}, multiplier: 1}, // [0]
-	{name: 'Sun', text: '日', unit: '小時', tag: {color: 'pink', text: '尖峰'}, multiplier: 1, strike: 1, bonus: NaN}, // [1]
-	{name: 'Mon', text: '一', unit: '小時', tag: {color: null, text: null}, multiplier: 1, strike: 1, bonus: NaN}, // [2]
-	{name: 'Tue', text: '二', unit: '小時', tag: {color: null, text: null}, multiplier: 1, strike: 1, bonus: NaN}, // [3]
-	{name: 'Wed', text: '三', unit: '小時', tag: {color: null, text: null}, multiplier: 1, strike: 1, bonus: NaN}, // [4]
-	{name: 'Thu', text: '四', unit: '小時', tag: {color: null, text: null}, multiplier: 1, strike: 1, bonus: NaN}, // [5]
-	{name: 'Fri', text: '五', unit: '小時', tag: {color: null, text: null}, multiplier: 1, strike: 1, bonus: NaN}, // [6]
-	{name: 'Sat', text: '六', unit: '小時', tag: {color: 'pink', text: '尖峰'}, multiplier: 1, strike: 1, bonus: NaN}, // [7]
+	{name: 'Sun', text: '日', unit: '小時', tag: {color: 'pink', text: '尖峰'}, multiplier: 1, strike: false, bonus: NaN}, // [1]
+	{name: 'Mon', text: '一', unit: '小時', tag: {color: null, text: null}, multiplier: 1, strike: false, bonus: NaN}, // [2]
+	{name: 'Tue', text: '二', unit: '小時', tag: {color: null, text: null}, multiplier: 1, strike: false, bonus: NaN}, // [3]
+	{name: 'Wed', text: '三', unit: '小時', tag: {color: null, text: null}, multiplier: 1, strike: false, bonus: NaN}, // [4]
+	{name: 'Thu', text: '四', unit: '小時', tag: {color: null, text: null}, multiplier: 1, strike: false, bonus: NaN}, // [5]
+	{name: 'Fri', text: '五', unit: '小時', tag: {color: null, text: null}, multiplier: 1, strike: false, bonus: NaN}, // [6]
+	{name: 'Sat', text: '六', unit: '小時', tag: {color: 'pink', text: '尖峰'}, multiplier: 1, strike: false, bonus: NaN}, // [7]
 ];
 
 let weeklyTemplate = {

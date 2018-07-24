@@ -25,46 +25,40 @@
 export default {
 	props: {
 		worker: Object,
-		rowDataSet: Object,
-		columnDataSet: Array
+		rowDataSet: Object
 	},
 	computed: {
 		salary() {
-			let columnData = JSON.parse(JSON.stringify(this.columnDataSet));
-			let rowData = JSON.parse(JSON.stringify(this.rowDataSet))
-			let salaryPerHour = rowData['salary']
+			let temp = JSON.parse(JSON.stringify(this.rowDataSet))
+			let salaryPerHour = temp['salary']
 			let sum = 0
 			
-			for (let key in columnData) {
-				let column = columnData[key];
-				if (column.name != 'salary' && column.strike != 0) {
-					sum += rowData[column.name] * salaryPerHour
+			for(let key in temp) {
+				if (key != 'salary') {
+					sum += temp[key] * salaryPerHour
 				}
 			}
-			
+
 			return sum;
 		},
 		fatigue() {
-			let columnData = JSON.parse(JSON.stringify(this.columnDataSet));
-			let rowData = JSON.parse(JSON.stringify(this.rowDataSet))
+			let temp = JSON.parse(JSON.stringify(this.rowDataSet))
 			let fatigueSum = 0;
 			let overEightHours = 0;
 			let weekDaysSum = 0;
 			let weekHoursSum = 0;
 
-			for (let key in columnData) {
-				let column = columnData[key];
-				if (column.name != 'salary' && column.strike != 0) {
-					// 非薪水、非罷工成功日
-					if (rowData[column.name] > 8) {
+			for(let key in temp) {
+				if (key != 'salary') {
+					if (temp[key] > 8) {
 						overEightHours = 1;
 					}
-					if (rowData[column.name]) {
-						weekDaysSum++;
+					if (temp[key]) {
+						weekDaysSum ++;
 					}
-					weekHoursSum += rowData[column.name];
+					weekHoursSum += temp[key];
 				}
-			}
+			};
 			
 			fatigueSum += overEightHours;
 			if(weekDaysSum > 5) {
