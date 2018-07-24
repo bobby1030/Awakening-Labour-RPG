@@ -8,7 +8,7 @@
 		   	</sui-grid-column>
 			<sui-grid-column computer="four" textAlign="center">
 				<LotteryCard :count="fatiguedCount" :img="fatiguedIcon" :checked="this.checked === 'fatigued'">
-					好累
+					破病
 				</LotteryCard>
 		   	</sui-grid-column>
 		</sui-grid-row>
