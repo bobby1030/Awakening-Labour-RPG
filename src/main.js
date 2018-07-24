@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import SemanticUIVue from 'semantic-ui-vue';
-import 'semantic-ui-css/semantic.min.css';
+import '../semantic/dist/semantic.min.css';
 
 import {sync} from 'vuex-router-sync';
 import VueNativeSock from 'vue-native-websocket';
