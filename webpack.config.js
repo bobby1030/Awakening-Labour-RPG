@@ -30,7 +30,7 @@ var config = {
 	resolve: {
 		extensions: ['.js', '.vue'],
 		alias: {
-			'vue$': 'vue/dist/vue.common.js'
+			'vue$': 'vue/dist/vue.runtime.esm.js'
 		}
 	},
 	plugins: [
