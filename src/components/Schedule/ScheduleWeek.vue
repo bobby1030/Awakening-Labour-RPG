@@ -18,7 +18,7 @@
 
 			<sui-table-body>
 				<sui-table-row v-if="role === 'GM'">
-					<sui-table-cell text-align="right">罷工</sui-table-cell>
+					<sui-table-cell text-align="right">罷工失敗</sui-table-cell>
 					<StrikeCheck 
 						v-for="(col, index) in weeklyDataSet.columns" :key="'strike'+'col-'+col.name"
 						:weekNum="weekNum"
