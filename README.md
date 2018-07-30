@@ -25,6 +25,7 @@ PORT=3000 npm run serve
 ## 參數定義
 ### 班表月份
 URL：`/Schedule/:displayMonth`
+
 | 月份 |     參數名    |  值 |
 |:----:|:-------------:|:---:|
 | 一月 | :displayMonth | Jan |
@@ -32,6 +33,7 @@ URL：`/Schedule/:displayMonth`
 
 ### 角色
 URL Query：`?role=roleID`
+
 |   月份   | 參數名 |    值    |
 |:--------:|:------:|:--------:|
 |    GM    | roleID |    GM    |
